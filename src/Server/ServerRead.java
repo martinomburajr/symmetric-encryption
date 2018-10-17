@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.nio.file.*;
 import java.net.Socket;
 import java.lang.Thread; 
+import java.lang.*;
 
 public class ServerRead extends Thread
 {
@@ -42,25 +43,22 @@ public class ServerRead extends Thread
                 {
                     // line - input from other clients
                     line = reader.readLine(); // read data received from the other endpoint
-                     
-                    String userFormatColor = (char) 27 + "[36m";
-                    String clearColor = (char) 27 + "[37m";
-                       
-                        // String username = line.substring(0, line.indexOf(":"));
+                    
+                    // String username = line.substring(0, line.indexOf(":"));
 
                     // 'username-optional' 'message type' 'message text'
 
                     // username :K key-text
                     if (line.toUpperCase().contains(":K")) 
                     { 
-                        String key = line.substring(3);
+                        String key = line.substring(3, line.length());
                         System.out.println( "Recieved Key =  " + key ); // print it to the terminal
                     }
 
                     // username :M Message-text
                     else if (line.toUpperCase().contains(":M")) 
                     {
-                        String message = userFormatColor + line.substring(3) + clearColor; 
+                        String message = line.substring(3) ; 
                         System.out.println( "Recieved Message =  " + message ); // print it to the terminal
                     }
 
@@ -68,7 +66,7 @@ public class ServerRead extends Thread
                     else if (line.toUpperCase().contains(":F")) 
                     { 
                         String data = line.substring(3);
-                        System.out.println( "Recieved File data =  "+ data ); // print it to the terminal
+                        System.out.println( "Recieved File data =  " + data ); // print it to the terminal
                         // Write received message bytes to file
                     }
 
