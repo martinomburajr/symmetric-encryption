@@ -1,27 +1,29 @@
 
 # Server / Client Application using sockets and AES Ecryption
 
-##Client application
+## Client application
 > Send and receives keys, messages and files to/from server application
- To Run Using makefile: compile and run:
+
+> To compile and run Client Using makefile:
   ```
   make 
-  make client
+  make run
 
   ``` 
 
-##Server application
+## Server application
 > Send and receives keys, messages and files to/from client application
-To Run Using makefile: compile and run:
+
+> To compile and run server using makefile :
   ```
   make 
-  make server
+  make run
 
   ```
 
-###The server must be executed first
+The server must be executed first to initiate connection between the client/server endpoints.
 
-###To send data between client and server using terminal: 
+### To send data between client and server using terminal: 
 - Use tag ":K 'key'" for keys 
 eg.:
 ```
