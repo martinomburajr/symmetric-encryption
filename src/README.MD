@@ -23,19 +23,19 @@
 
 The server must be executed first to initiate connection between the client/server endpoints.
 
-### To send data between client and server using terminal: 
-- Use tag ":K 'key'" for keys 
-eg.:
+### To send keys and data between client and server using terminal: 
+> For Keys, use tag ':K' followed by key.
+> e.g.:
 ```
 :K 12alskg4211hgh@$!
 ```
-- Use tag ":M 'Message'" for messages
-eg.:
+> For Messages, Use tag ':M'  followed by Message.
+> e.g.:
 ```
 :M hello client app
 ```
-- Use tag ":F 'file'" for files
-eg.:
+> For Files ... Use tag ':F' followed by filename.
+> e.g.:
 ```
 :F /filename.txt
 ```
