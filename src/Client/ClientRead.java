@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.nio.file.*;
 import java.net.Socket;
 
+import java.lang.*;
+
 public class ClientRead extends Thread {
     private BufferedReader reader;
 
@@ -34,33 +36,28 @@ public class ClientRead extends Thread {
             {
                 synchronized(this) 
                 {
-                    while (!reader.ready()) {
-                        wait(1000);
-                    } // spin until we can print to the screen
-
+                    // while (!reader.ready()) { wait(1000); } // spin until we can print to the screen
                     if (reader.ready()) 
                     {
                         // line - input from other clients
                         line = reader.readLine(); // read data received from the other endpoint
-                     
-                        String userFormatColor = (char) 27 + "[36m";
-                        String clearColor = (char) 27 + "[37m";
-                       
+
                         // String username = line.substring(0, line.indexOf(":"));
 
                         // 'username-optional' 'message type' 'message text'
 
                         // username :K key-text
                         if (line.toUpperCase().contains(":K")) 
-                        { 
-                            String key = line.substring(3);
+                        {
+                            String key =  line.substring(3, line.length());
+
                             System.out.println( "Recieved Key = " + key ); // print it to the terminal
                         }
 
                         // username :M Message-text
                         else if (line.toUpperCase().contains(":M")) 
                         {
-                            String message = userFormatColor + line.substring(3) + clearColor; 
+                            String message = line.substring(3); 
                             System.out.println( "Recieved Message = " + message ); // print it to the terminal
                         }
 
